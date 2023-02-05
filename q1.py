@@ -16,9 +16,11 @@ if (t_char=="Y" or t_char=='y'):
   if (feeling=="Fine" or feeling=="I'm good" or feeling=="I'm great" or feeling=="Good"):
     print("I'm glad you're feeling well,", name + ".")
     Drive=True
-  elif(feeling=="Bad" or feeling=="Not Okay"):
+  elif(feeling=="Bad" or feeling=="Not Okay" or feeling=="I' m not feeling good"):
     print("Have some time to yourself to recharge!")
     Drive=False
+  else:
+    print("I see!")
 
     
   #question 4
