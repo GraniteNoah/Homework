@@ -11,6 +11,7 @@ source=new
 
 f=len(source)-1
 i=0
+Flag=False
 
 while(i<f):
     Flag=False
