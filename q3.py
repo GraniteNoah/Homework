@@ -11,18 +11,18 @@ source=new
 
 f=len(source)-1
 i=0
-Flag=0
+Flag=False
 
 while(i<f):
-    Flag=-1
+    Flag=False
     if(source[i]==source[f] or ord(source[i])==ord(source[f])+32 
     or ord(source[i])==ord(source[f])-32):
-        Flag=1
+        Flag=True
     i+=1
     f-=1
 
-if (Flag==1):
+if (Flag==True):
     print ("Yes")
 
-elif (Flag==-1):
+elif (Flag==False):
     print ("No")
