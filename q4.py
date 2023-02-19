@@ -1,35 +1,49 @@
+def price(p):
+    if (p%2!=0 and p%3!=0):
+        a=p-1
+        count=0
+        while(a>0):
+            if (a%2!=0 and a%3!=0):
+                count+=1
+            a-=1
+        ##discount
+        a=count-1
+        while(a>0):
+            if (a%2!=0 and a%3!=0):
+                count-=1
+            a-=1
+
+    
+    if (p%2==0 or p%3==0):
+        a=p-1
+        count=0
+        while(a>0):
+            if (a%2!=0 and a%3!=0):
+                if (p%a==0):
+                    count+=1
+            a-=1
+        ##discount
+        a=count-1
+        while(a>0):
+            if (a%2!=0 and a%3!=0):
+                if (count%a==0):
+                    count-=1
+
+    return count 
 
 
 ##main
-print("What is the height of the pyramid?\n")
-h = int(input())
-i = 1
-width = 16
-track = ''
+n=int(input())
+i=0
+prices={}
+while (i<n):
+    prices[i]=price(int(input()))
+    i+=1
 
-if (1 < h and h < 10):
-    while (i<=h):
-        print (end=" " * width)
-        width -= 2
-        if (i==1):
-            print("1")
-        if (i == 2):
-            print ("1 2 1")
-        if (i == 3):
-            print ("1 2 3 2 1")
-        if (i == 4):
-            print ("1 2 3 4 3 2 1")
-        if (i == 5):
-            print ("1 2 3 4 5 4 3 2 1")
-        if (i == 6):
-            print ("1 2 3 4 5 6 5 4 3 2 1")
-        if (i == 7):
-            print ("1 2 3 4 5 6 7 6 5 4 3 2 1")
-        if (i == 8):
-            print ("1 2 3 4 5 6 7 8 7 6 5 4 3 2 1")
-        if (i == 9):
-            print ("1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1")
-        i+=1
+sum=0
+i=0
+while(i<len(prices)):
+    sum+=prices[i]
+    i+=1
 
-else:
-    print("PyNum cannot help you!")
+print(sum)
