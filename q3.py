@@ -11,7 +11,6 @@ source=new
 
 f=len(source)-1
 i=0
-Flag=False
 
 while(i<f):
     Flag=False
@@ -21,8 +20,8 @@ while(i<f):
     i+=1
     f-=1
 
-if (Flag):
+if (Flag==True):
     print ("Yes")
 
-else:
+elif (Flag==False):
     print ("No")
