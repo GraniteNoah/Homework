@@ -1,4 +1,14 @@
 source=input()
+
+remove = ", "
+new = ""
+
+for each in source:
+    if each not in remove:
+        new += each
+
+source=new
+
 f=len(source)-1
 i=0
 
