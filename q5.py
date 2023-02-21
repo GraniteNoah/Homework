@@ -35,7 +35,7 @@ while(i<n):
     i+=1
 
 i=0
-while(i<len(nums)-1):
+while(i<len(nums)):
     nums[0]=lcm(nums[0], nums[1])
     del nums[1]
     i+=1
