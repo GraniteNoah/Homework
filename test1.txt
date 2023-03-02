@@ -1,0 +1,12 @@
+temp=""
+temp+='a'
+temp+=chr(67)
+print(temp)
+i=0
+set=[input()]
+j=0
+while(j<len(set)):
+    while (i<len(set[j])):
+        temp+=set[j][i]
+        print(temp)
+        i+=1
