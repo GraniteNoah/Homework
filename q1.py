@@ -1,50 +1,42 @@
+n=int(input())
+i=0
+set1={}
+while(i<n):
+    set1[i]=input()
+    i+=1
+
+set2={}
+j=0
+while(j<len(set1)):
+    temp=""
+    i=0
+    while (i<len(set1[j])):
+        if (ord(set1[j][i])>=97 and ord(set1[j][i])<=122):
+            temp+=chr(ord(set1[j][i])-32)
+        elif (set1[j][i]!=" " and set1[j][i]!=","):
+            temp+=set1[j][i]
+        i+=1
+    set2[j]=temp
+    j+=1
 
 
+for key in set2:
+    temp=0
+    for l in set2[key]:
+        temp+=ord(l)
+    set1[key]=temp
 
-while(True):
-    source = input()
-    if(source == "quit"):
-        break
-
-    k = int(input())
-
-    if (len(source) <= k):
-        print(source)
-    
+set3={}
+for x in set1:
+    if set1[x] not in set3:
+        set3[set1[x]]=1
     else:
-        all = {}
-        i=0
-        j=0
-        while(i<=len(source)-j):
-            letters=""
-            j=0
-            while(j<k):
-                letters = letters + source[i+j]
-                all[i] = letters
-                j+=1
-            i += 1
-        ans1 = {}
-        i = 0
-        while(i<len(all)):
-            track = {}
-            for j in all[i]:
-                if (j not in track):
-                    track[j] = 1
-                else:
-                    track[j] += 1
-            ans1[i] = len(track)
-            i+=1
-        counter = k
-        ##pinting error
-        i=0
-        Flag=True
-        while (i<len(ans1) and Flag):
-            for j in ans1:
-                if ans1[j] == counter:
-                    print(all[j])
-                    Flag = False
-                    break
-            counter-=1    
-                
+        set3[set1[x]]+=1
 
 
+temp=0
+for x in set3:
+    if (set3[x]>temp):
+        temp=set3[x]
+
+print(temp)
