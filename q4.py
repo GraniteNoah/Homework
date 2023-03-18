@@ -1,49 +1,66 @@
-def price(p):
-    if (p%2!=0 and p%3!=0):
-        a=p-1
-        count=0
-        while(a>0):
-            if (a%2!=0 and a%3!=0):
-                count+=1
-            a-=1
-        ##discount
-        a=count-1
-        while(a>0):
-            if (a%2!=0 and a%3!=0):
-                count-=1
-            a-=1
 
+file = open ("grades.txt", "r")
+text = file.read()
+lines = text.splitlines()
+data = {}
+for line in lines:
+    info = line.split()
     
-    if (p%2==0 or p%3==0):
-        a=p-1
-        count=0
-        while(a>0):
-            if (a%2!=0 and a%3!=0):
-                if (p%a==0):
-                    count+=1
-            a-=1
-        ##discount
-        a=count-1
-        while(a>0):
-            if (a%2!=0 and a%3!=0):
-                if (count%a==0):
-                    count-=1
+    #stored as {id:{dept:{course:grade}}}
+    if (info[2] not in data): data[info[2]] = {}
+    if (info[0] not in data[info[2]]): data[info[2]][info[0]] = {}
+    if (info[1] not in data[info[2]][info[0]]): data[info[2]][info[0]][info[1]] = info[3]
+    #data stored
 
-    return count 
+#menu
+choice=input()
+while (True):
+    if (choice == "quit"):
+        break
+    ####################################
+    elif (choice == "avg"):
+        pot = input()
+        pot.split()
+        dept = pot[0]
+        cn = pot[1]
+        average = 0
+        count = 0
 
+        for i in data.values():
+            for j in i.keys():
+                if (j == dept):
+                    for k in i.values:
+                        for l in k.keys():
+                            if (l == cn):
+                                average += float(k[l])
+                                count += 1
+        average = average/count
+        print("{:.2f}".format(average))
+    ####################################
+    elif (choice == "gpa"):
+        sid = input()
+        gp = 0
+        count = 0
+        for i in data[sid].values():
+            for j in i.values():
+                gp += float(j)
+                count += 1
+        gp = gp/count
+        print ("{:.2f}".format(gp))
+    ###################################
+    elif (choice == "fails"):
+        pot = input()
+        pot.split()
+        dept = pot[0]
+        cn = pot[1]
+        fails = 0
 
-##main
-n=int(input())
-i=0
-prices={}
-while (i<n):
-    prices[i]=price(int(input()))
-    i+=1
-
-sum=0
-i=0
-while(i<len(prices)):
-    sum+=prices[i]
-    i+=1
-
-print(sum)
+        for i in data.values():
+            for j in i.keys():
+                if (j == dept):
+                    for k in i.values:
+                        for l in k.keys():
+                            if (l == cn):
+                                if(int(k[l]) < 75):
+                                    fails += 1
+        print (fails)
